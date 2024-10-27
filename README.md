@@ -37,7 +37,7 @@ Please find the live demo here : [planPal](https://planpall.netlify.app)
 2. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/yourusername/planpal.git
+    git clone https://github.com/pimanzi/planPal_Bridge.git
     ```
 
 3. Navigate to the PlanPal directory:
