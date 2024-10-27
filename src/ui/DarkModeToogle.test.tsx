@@ -1,46 +1,28 @@
 import { render, fireEvent } from '@testing-library/react';
 import { DarkModeContext } from '../contexts/DarkModeProvider';
 import DarkModeToggle from './DarkModeToggle';
-import { beforeEach, vi } from 'vitest';
+import { beforeEach } from 'vitest';
 
 beforeEach(() => {
-  // Mock window.matchMedia for each test
-  (window.matchMedia as any) = vi.fn().mockImplementation((query) => ({
-    matches: query.includes('dark'),
-    addListener: vi.fn(),
-    removeListener: vi.fn(),
-  }));
-
   // Clear localStorage before each test
   localStorage.clear();
 });
 
 describe('DarkModeToggle', () => {
-  it('initially sets dark mode based on system preference', () => {
-    // Simulating user prefers dark mode
-    (window.matchMedia as any).mockImplementationOnce(() => ({
-      matches: true, // Simulating user prefers dark mode
-      addListener: vi.fn(),
-      removeListener: vi.fn(),
-    }));
-
+  it('initially sets dark mode to light', () => {
     render(
       <DarkModeContext>
         <DarkModeToggle />
       </DarkModeContext>
     );
 
-    // Check if dark mode class is set based on system preference
-    expect(document.documentElement.classList.contains('dark')).toBe(true);
+    // Initially, it should not have dark class
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
   });
 
   it('toggles dark mode based on button clicks and respects localStorage', () => {
-    // Simulate user prefers light mode for the toggle test
-    (window.matchMedia as any).mockImplementationOnce(() => ({
-      matches: false, // Simulating user prefers light mode
-      addListener: vi.fn(),
-      removeListener: vi.fn(),
-    }));
+    // Set initial value in localStorage to light mode
+    localStorage.setItem('isDark', 'false');
 
     const { getByRole } = render(
       <DarkModeContext>
@@ -51,7 +33,7 @@ describe('DarkModeToggle', () => {
     const button = getByRole('button');
     expect(button).toBeInTheDocument();
 
-    // Initially, it should not have dark class
+    // Initially, it should light  class
     expect(document.documentElement.classList.contains('dark')).toBe(false);
 
     // Click to toggle dark mode
@@ -65,5 +47,19 @@ describe('DarkModeToggle', () => {
     expect(document.documentElement.classList.contains('dark')).toBe(false);
     // Verify localStorage is set
     expect(localStorage.getItem('isDark')).toBe('false');
+  });
+
+  it('uses localStorage value on initial render', () => {
+    // Set initial value in localStorage to dark mode
+    localStorage.setItem('isDark', 'true');
+
+    render(
+      <DarkModeContext>
+        <DarkModeToggle />
+      </DarkModeContext>
+    );
+
+    // Check if dark mode class is set based on localStorage
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
   });
 });
