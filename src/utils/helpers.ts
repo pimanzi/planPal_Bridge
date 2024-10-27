@@ -21,8 +21,6 @@ export const formatShortDateActivity = (locale: string, date: Date): string =>
 
 export function formatLocalizedDateShortActivity(date: Date) {
   const locale = locales[i18n.language as LocaleKey] || locales.en;
-  console.log(locale);
-
   return formatShortDateActivity(locale, date);
 }
 

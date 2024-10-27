@@ -36,8 +36,11 @@ export function CreateTaskSm() {
     handleSubmit,
     register,
     reset,
+    watch,
     formState: { errors },
   } = useForm<FormData>();
+
+  const imageFile = watch('image')?.[0];
 
   const onSubmit = (data: FormData) => {
     // Transform dates to ISO format
@@ -104,7 +107,7 @@ export function CreateTaskSm() {
             ></Controller>
 
             {errors.note && (
-              <span className="text-red-500  text-xs">
+              <span className="text-red-500 text-xs">
                 {errors.note.message}
               </span>
             )}
@@ -120,11 +123,11 @@ export function CreateTaskSm() {
                 )}
               />
               {errors.startDate && (
-                <span className="text-red-500  text-xs">
+                <span className="text-red-500 text-xs">
                   {errors.startDate.message}
                 </span>
-              )}{' '}
-            </div>{' '}
+              )}
+            </div>
             <div className="flex-col flex w-[50%]">
               <Controller
                 name="endDate"
@@ -135,22 +138,24 @@ export function CreateTaskSm() {
                 )}
               />
               {errors.endDate && (
-                <span className="text-red-500  text-xs">
+                <span className="text-red-500 text-xs">
                   {errors.endDate.message}
                 </span>
               )}
             </div>
           </div>
-          <div className="flex flex-col">
-            <label htmlFor="image">{t('imageInput')}</label>
-            <input
-              type="file"
-              className="file-input"
-              accept="image/*"
-              id="image"
-              {...register('image')}
-              disabled={isCreating}
-            />
+          <div className="flex file-inputflex w-full rounded-md border focus:border-transparent border-[var(--color-stone-100)] bg-[var(--color-grey-0)] px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-700)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+            <label htmlFor="image" className="">
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                id="image"
+                {...register('image')}
+                disabled={isCreating}
+              />
+              <span>{imageFile?.name || t('imageInput')}</span>
+            </label>
           </div>
           <div>
             <Controller
@@ -166,25 +171,25 @@ export function CreateTaskSm() {
               )}
             />
             {errors.status && (
-              <span className="text-red-500  text-xs">
+              <span className="text-red-500 text-xs">
                 {errors.status.message}
               </span>
             )}
           </div>
 
-          <DialogFooter className="flex flex-row justify-end gap-2">
+          <DialogFooter className="flex gap-2 justify-end">
             <Button
               disabled={isCreating}
               onClick={onClear}
               type="reset"
-              className="w-[30%] bg-transparent hover:bg-[var(--color-light-black)] border border-stone-300 active:border-[var(--border-color-hover)] text-[var(--color-text-main)]"
+              className=" w-fit bg-transparent hover:bg-[var(--color-light-black)] border border-stone-300 active:border-[var(--border-color-hover)] text-[var(--color-text-main)]"
             >
               {t('clearForm')}
             </Button>
             <Button
               disabled={isCreating}
               type="submit"
-              className=" w-[30%] bg-[var(--border-color-hover)] text-white hover:bg-[var(--border-color-hover)] hover:scale-x-105 hover:scale-y-105 transition-all duration-300"
+              className="w-fit px-2 bg-[var(--border-color-hover)] text-white hover:bg-[var(--border-color-hover)] hover:scale-x-105 hover:scale-y-105 transition-all duration-300"
             >
               {t('submitForm')}
             </Button>

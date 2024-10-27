@@ -27,7 +27,7 @@
   "startDateInputAlert": "Fecha de inicio requerida",
   "endDateInput": "Fecha de finalización",
   "endDateInputAlert": "Fecha de finalización requerida",
-  "imageInput": "Imagen de tarea (opcional)",
+  "imageInput": "Elegir una imagen (opcional)",
   "clearForm": "Limpiar",
   "submitForm": "Crear tarea",
   "selectStatusAlert": "Estado requerido",
@@ -58,5 +58,22 @@
   "navHome": "Inicio",
   "navTasks": "Tareas",
   "navSignout": "Cerrar sesión",
-  "dashboard": "Panel de control"
+  "dashboard": "Panel de control",
+  "calendar": {
+    "months": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ],
+    "weekdays": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
+  }
 }

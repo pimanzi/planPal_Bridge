@@ -25,14 +25,14 @@ export function DatePickerUi({ label, value, onChange }: DatePickerUiProps) {
         <Button
           variant={'outline'}
           className={cn(
-            'w-full text-sm justify-start text-left font-normal border border-[var(--color-stone-100)]',
+            '  w-full text-sm justify-start text-left font-normal border border-[var(--color-stone-100)]',
             'hover:text-[var(--color-grey-500)] hover:bg-[var(--color-bg-main)]',
             'bg-[var(--color-grey-0)] text-[var(--color-grey-500)]',
             !value && 'text-muted-foreground',
             'truncate'
           )}
         >
-          {!value && <CalendarIcon className="mr-2" />}
+          {!value && <CalendarIcon className="mr-1" />}
           {value ? format(value, 'PPP') : <span>{label}</span>}
         </Button>
       </PopoverTrigger>

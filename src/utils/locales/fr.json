@@ -27,7 +27,7 @@
   "startDateInputAlert": "Date de début requise",
   "endDateInput": "Date de fin",
   "endDateInputAlert": "Date de fin requise",
-  "imageInput": "Image de tâche (facultatif)",
+  "imageInput": "Choisir une image (facultatif)",
   "clearForm": "Effacer",
   "submitForm": "Créer la tâche",
   "selectStatusAlert": "Statut requis",
@@ -58,5 +58,22 @@
   "navHome": "Accueil",
   "navTasks": "Tâches",
   "navSignout": "Quitter",
-  "dashboard": "Tableau de bord"
+  "dashboard": "Tableau de bord",
+  "calendar": {
+    "months": [
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre"
+    ],
+    "weekdays": ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"]
+  }
 }

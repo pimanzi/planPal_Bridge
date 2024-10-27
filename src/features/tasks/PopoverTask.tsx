@@ -117,10 +117,10 @@ export function PopoverTask({
                 {t('deleteDescription')}
               </DialogDescription>
             </DialogHeader>
-            <DialogFooter>
+            <DialogFooter className="flex gap-2 justify-end items-center">
               <Button
                 onClick={() => setOpenDialog(false)}
-                className="bg-[var(--color-grey-0)] hover:bg-[var(--color-light-black)] border border-stone-300 active:border-[var(--border-color-hover)] text-[var(--color-text-main)]"
+                className="w-[30%] bg-[var(--color-grey-0)] hover:bg-[var(--color-light-black)] border border-stone-300 active:border-[var(--border-color-hover)] text-[var(--color-text-main)]"
               >
                 {t('cancelDelete')}
               </Button>

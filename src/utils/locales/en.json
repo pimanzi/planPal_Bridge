@@ -27,7 +27,7 @@
   "startDateInputAlert": "Start date is required",
   "endDateInput": "End date",
   "endDateInputAlert": "End date is required",
-  "imageInput": "Task Image (optional)",
+  "imageInput": "Choose Image (optional)",
   "clearForm": "Clear",
   "submitForm": "Create Task",
   "selectStatusAlert": "Status is required",
@@ -58,5 +58,22 @@
   "navHome": "Home",
   "navTasks": "Tasks",
   "navSignout": "Sign Out",
-  "dashboard": "Dashboard"
+  "dashboard": "Dashboard",
+  "calendar": {
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "weekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  }
 }
