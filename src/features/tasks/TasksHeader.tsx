@@ -2,9 +2,19 @@ import { useTranslation } from 'react-i18next';
 import { BsDot } from 'react-icons/bs';
 import { useTasks } from './useTasks';
 import { formatLocalizedDateShortActivity } from '@/utils/helpers';
+import { useSearchParams } from 'react-router-dom';
 function TasksHeader() {
   const { tasks } = useTasks();
+  const [searchParams] = useSearchParams();
+  const sortField = searchParams.get('sortBy') || 'date-desc';
+  const modifier = sortField === 'date-asc' ? 1 : 1;
   const task = tasks ? tasks : [];
+  const taskAsc = task.sort(
+    (a, b) =>
+      (new Date(a.created_at).getTime() - new Date(b.created_at).getTime()) *
+      modifier
+  );
+
   const { t } = useTranslation();
   return (
     <div className="flex items-center justify-between  xsTablet:pl-[30px] smTablet:pl-[20px]">
@@ -24,14 +34,14 @@ function TasksHeader() {
         <p className="self-end font-inter font-semibold">
           {' '}
           {t('fromTaskHeader')},{' '}
-          {formatLocalizedDateShortActivity(new Date(task[0]?.created_at))}
+          {formatLocalizedDateShortActivity(new Date(taskAsc[0]?.created_at))}
         </p>
         <p className="flex items-center font-inter text-[var(--color-grey-500)]">
           <BsDot className="inline-block" fill="#54d51d" size={35}></BsDot>{' '}
           <span>
             {t('toTaskHeader')},{' '}
             {formatLocalizedDateShortActivity(
-              new Date(task[task.length - 1].created_at)
+              new Date(taskAsc[task.length - 1].created_at)
             )}
           </span>
         </p>
