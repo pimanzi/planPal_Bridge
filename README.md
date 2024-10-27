@@ -25,7 +25,7 @@ PlanPal is a simple task management app that helps users schedule their tasks, t
 
 ##Live Demo
 
-Please find the live demo here : [planPal](https://planpall.netlify.app/home)
+Please find the live demo here : [planPal](https://planpall.netlify.app)
 
 ## Installation
 
