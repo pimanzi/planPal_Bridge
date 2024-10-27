@@ -43,7 +43,7 @@ Please find the live demo here : [planPal](https://planpall.netlify.app)
 3. Navigate to the PlanPal directory:
 
     ```bash
-    cd planpal
+    cd planPal_Bridge
     ```
 
 4. Install the necessary dependencies:
